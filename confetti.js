@@ -1,7 +1,7 @@
 // Confetti.js - downloaded from https://www.cssscript.com/confetti-falling-animation/
 
-var maxParticleCount = 150; //set max confetti count
-var particleSpeed = 2; //set the particle animation speed
+var maxParticleCount = 100; //set max confetti count
+var particleSpeed = 4; //set the particle animation speed
 var startConfetti; //call to start confetti animation
 var stopConfetti; //call to stop adding confetti
 var toggleConfetti; //call to start or stop the confetti animation depending on whether it's already running
@@ -46,7 +46,7 @@ function startConfettiInner() {
 	if (canvas === null) {
 		canvas = document.createElement("canvas");
 		canvas.setAttribute("id", "confetti-canvas");
-		canvas.setAttribute("style", "display:block;z-index:999999;pointer-events:none");
+		canvas.setAttribute("style", "position: fixed; top: 0; left: 0; display: block; z-index: 999999; pointer-events: none;");
 		document.body.appendChild(canvas);
 		canvas.width = width;
 		canvas.height = height;
@@ -78,7 +78,7 @@ function stopConfettiInner() {
 }
 
 function removeConfettiInner() {
-	stopConfetti();
+	stopConfettiInner();
 	particles = [];
 }
 
@@ -129,3 +129,5 @@ function updateParticles() {
 		}
 	}
 }
+
+export { startConfettiInner, stopConfettiInner, removeConfettiInner };
